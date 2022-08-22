@@ -1,0 +1,23 @@
+{
+  "name": "restfulroutes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanchitYadav2005/Express_RestfulRoutes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SanchitYadav2005/Express_RestfulRoutes/issues"
+  },
+  "homepage": "https://github.com/SanchitYadav2005/Express_RestfulRoutes#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
