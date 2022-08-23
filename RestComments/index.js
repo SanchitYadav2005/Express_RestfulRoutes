@@ -53,6 +53,14 @@ app.get('/comments/:id', (req,res)=>{
     const comment = comments.find(c => c.id === id);
     res.render('comments/show', {comment})
 });
+//The HTTP PATCH request method applies partial modifications to a resource.
+app.patch('/comments/:id', (req, res)=>{
+    const {id} = req.params;
+    const newCommentText = req.body.comment;
+    const foundComment = comments.find(c => c.id === id);
+    foundComment.comment = newCommentText;
+    res.redirect('/comments')
+});
 
 app.listen(port, function(){
     console.log(`listining on the port ${port}`);
