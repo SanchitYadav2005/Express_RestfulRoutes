@@ -4,7 +4,12 @@ const port = 3000;
 const path = require("path");
 const { v4: uuidv4 } = require('uuid');
 uuidv4(); //generates unique id's
+// importing method overiding method or package;
+//Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn’t support it.
+const methodOveriding = require('method-override');
 
+//Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn’t support it.
+app.use(methodOveriding('_method'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.set('view engine', 'ejs');
@@ -53,13 +58,19 @@ app.get('/comments/:id', (req,res)=>{
     const comment = comments.find(c => c.id === id);
     res.render('comments/show', {comment})
 });
+// this is for getting a form in return to edid the comment;
+app.get('/comments/:id/edit', (req, res)=>{
+    const {id} = req.params;
+    const comment = comments.find(c => c.id === id);
+    res.render('comments/edit', {comment});
+})
 //The HTTP PATCH request method applies partial modifications to a resource.
 app.patch('/comments/:id', (req, res)=>{
     const {id} = req.params;
     const newCommentText = req.body.comment;
     const foundComment = comments.find(c => c.id === id);
     foundComment.comment = newCommentText;
-    res.redirect('/comments')
+    res.redirect('/comments');
 });
 
 app.listen(port, function(){
