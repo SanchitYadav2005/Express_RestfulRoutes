@@ -15,7 +15,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
 
-const comments = [
+let comments = [
     {
         id: uuidv4(),
         username : "Todd",
@@ -72,6 +72,12 @@ app.patch('/comments/:id', (req, res)=>{
     foundComment.comment = newCommentText;
     res.redirect('/comments');
 });
+
+app.delete('/comments/:id', (req,res)=>{
+    const {id} = req.params;
+    comments = comments.filter(c => c.id !== id);
+    res.redirect('/comments')
+})
 
 app.listen(port, function(){
     console.log(`listining on the port ${port}`);
