@@ -11,7 +11,7 @@
     <h1>Home</h1>
     <ul>
         <% for(data of studentdata){ %>
-            <li><%= data.moto %> - <span><%= data.student %></span>  </li>
+            <li><%= data.moto %> - <span><%= data.student %></span><a href="/show">details</a>  </li>
         <% } %> 
     </ul>
     <form action="/new">

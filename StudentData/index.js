@@ -51,6 +51,11 @@ app.post('/', (req,res)=>{
     const {student, moto} = req.body;
     studentdata.push({student, moto, id: uuidv4()})
     res.redirect('/');
+});
+app.get('/:id', (req, res)=>{
+    const {id} = req.params;
+    const student = studentdata.find(stu => stu.id = id);
+    res.render('show', {student})
 })
 
 app.listen(port, (err)=>{
