@@ -9,5 +9,13 @@
 </head>
 <body>
     <h1>Home</h1>
+    <ul>
+        <% for(data of studentdata){ %>
+            <li><%= data.moto %> - <span><%= data.name %></span>  </li>
+        <% } %> 
+    </ul>
+    <form action="/new">
+        <button>New</button>
+    </form>
 </body>
 </html>

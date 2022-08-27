@@ -14,16 +14,36 @@ app.use(methodOverriding('_method'));
 let studentdata = [
     {
         id: uuidv4(),
-        name: "Sanchit"
+        name: "Sanchit",
+        moto: "The purpose of our lives is to be happy."
     },
     {
         id: uuidv4(),
-        name: "Navneet"
+        name: "Navneet",
+        moto: "Life is what happens when you're busy making other plans."
+    },
+    {
+        id: uuidv4(),
+        name: "Abhishek",
+        moto: "Get busy living or get busy dying."
+    },
+    {
+        id: uuidv4(),
+        name: "Rohit",
+        moto:  "You only live once, but if you do it right, once is enough."
+    },
+    {
+        id: uuidv4(),
+        name: "Nirdesh",
+        moto:  "Many of life’s failures are people who did not realize how close they were to success when they gave up."
     }
 ]
 
 app.get('/', (req, res)=>{
-   res.render('home')
+   res.render('home', {studentdata})
+});
+app.get('/new', (req, res)=>{
+    res.render('new')
 })
 
 app.listen(port, (err)=>{
