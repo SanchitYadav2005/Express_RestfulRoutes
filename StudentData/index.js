@@ -54,8 +54,23 @@ app.post('/', (req,res)=>{
 });
 app.get('/:id', (req, res)=>{
     const {id} = req.params;
-    const student = studentdata.find(stu => stu.id = id);
+    const student = studentdata.find(c => c.id == id);
     res.render('show', {student})
+    console.log(req.params)
+});
+
+app.get('/:id/edit', (req, res)=>{
+    const {id} = req.params;
+    const student = studentdata.find(c => c.id == id);
+    res.render('edit', {student})
+});
+
+app.patch('/:id', (req, res)=>{
+    const {id} = req.params;
+    const newMoto = req.body.moto;
+    const foundid = studentdata.find(c => c.id == id);
+    foundid.moto = newMoto;
+    res.redirect('/');
 })
 
 app.listen(port, (err)=>{
