@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const randomId = require('random-id');
+
+//setting the length of id and pattern
+const length = 5;
+const pattern = 'aA0';
+let id = randomId(length, pattern)
 
 //setting ejs.
 app.set("view engine", 'ejs');
@@ -12,22 +18,22 @@ app.use(express.json());
 
 let todolist = [
     {
-        id:1,
+        id:id,
         username: "Jon",
         task : "work on the login page."
     },
     {
-        id:2,
+        id:id,
         username: "rizwan",
         task: "get the client list done."
     },
     {
-        id:3,
+        id:id,
         username: "Sanchit",
         task: "deploy the landing page."
     },
     {
-        id:4,
+        id:id,
         username: "Harry",
         task: "manage all the team members and their meetings"
     }
@@ -44,7 +50,7 @@ app.get('/todo/new', (request, response)=>{
 // setting up post request to get the paramaters and add them to the array.
 app.post('/todo', (request, response)=>{
     const {username, task} = request.body;
-    todolist.push({username,task, id: 5});
+    todolist.push({username,task, id: id});
     response.redirect('/todo');
 });
 
