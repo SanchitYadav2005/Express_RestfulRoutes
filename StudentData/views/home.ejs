@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,23 @@
     <link rel="stylesheet" href="/style.css">
     <title>Home</title>
 </head>
+
 <body>
     <h1>Home</h1>
     <ul>
         <% for(data of studentdata){ %>
-            <li><%= data.moto %> - <span><%= data.student %></span><a href="/show">details</a>  </li>
-        <% } %> 
+            <li>
+                <%= data.moto %> -
+                    <span>
+                        <%= data.student %>
+                    </span>
+                    <a href="/student/<%= data.id %>">details</a>
+            </li>
+        <% } %>
     </ul>
     <form action="/new">
         <button>New</button>
     </form>
 </body>
+
 </html>

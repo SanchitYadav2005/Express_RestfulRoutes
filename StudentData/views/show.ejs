@@ -8,10 +8,10 @@
     <title>Show</title>
 </head>
 <body>
-    <h1><%= student.id %> </h1>
-    <h2><%= student.moto %></h2>
-    <h3><%= student.student %> </h3>
-    <a href="//<%= student.id %>/edit">Edit</a>
-    <a href="/">Back to home</a>
+    <h1>Student id: <%= student.id %> </h1>
+    <h2>Student Name: <%= student.student %> </h2>
+    <h3>Student Moto: <%= student.moto %> </h3>
+    <a href="/student">back</a>
+    <a href="/student <%= student.id %>/edit ">edit</a>
 </body>
 </html>
