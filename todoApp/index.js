@@ -56,8 +56,9 @@ app.post('/todo', (request, response)=>{
 // setting the get request for the route /todo/:userId.
 app.get('/todo/:id', (request, response)=>{
     const {id} = request.params;
-    let findId = todolist.find(c => c.id === id)
+    let findId = todolist.find()
     response.render('show', {findId});
+    console.log(findId)
 })
 
 app.listen(port, (err)=>{
