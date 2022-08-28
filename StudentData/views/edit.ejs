@@ -8,9 +8,9 @@
     <title>Edit</title>
 </head>
 <body>
-    <form method="post" action="//<%= student.id %>?_method=PATCH ">
-        <textarea name="moto" id="edit-moto" cols="30" rows=12">
-            edit Here.
+    <form method="post" action="/student/<%=student.id %>?_method=PATCH">
+        <textarea name="moto" id="edit-moto" cols="30" rows="10">
+            edit here.
         </textarea>
         <button>Save</button>
     </form>

@@ -12,6 +12,9 @@
     <h2>Student Name: <%= student.student %> </h2>
     <h3>Student Moto: <%= student.moto %> </h3>
     <a href="/student">back</a>
-    <a href="/student <%= student.id %>/edit ">edit</a>
+    <a href="/student/ <%= student.id %>/edit ">edit</a>
+    <form method="post" action="/student/<%= student.id %>?_method=DELETE ">
+        <button>delete</button>
+    </form>
 </body>
 </html>

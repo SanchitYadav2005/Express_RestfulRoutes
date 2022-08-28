@@ -15,27 +15,27 @@ app.use(express.json())
 
 let studentdata = [
     {
-        id: 1,
+        id: uuidv4(),
         student: "Sanchit",
         moto: "The purpose of our lives is to be happy."
     },
     {
-        id: 2,
+        id: uuidv4(),
         student: "Navneet",
         moto: "Life is what happens when you're busy making other plans."
     },
     {
-        id: 3,
+        id: uuidv4(),
         student: "Abhishek",
         moto: "Get busy living or get busy dying."
     },
     {
-        id: 4,
+        id: uuidv4(),
         student: "Rohit",
         moto:  "You only live once, but if you do it right, once is enough."
     },
     {
-        id: 5,
+        id: uuidv4(),
         student: "Nirdesh",
         moto:  "Many of life’s failures are people who did not realize how close they were to success when they gave up."
     }
@@ -49,15 +49,35 @@ app.get('/new', (req, res)=>{
 });
 app.post('/student', (req,res)=>{
     const {student, moto} = req.body;
-    studentdata.push({student, moto})
+    studentdata.push({student, moto, id: uuidv4()})
     res.redirect('/student');
 });
 
 app.get('/student/:id', (req, res)=>{
     const {id} = req.params;
-    const student = studentdata.find(c => c.id === parseInt(id));
+    const student = studentdata.find(c => c.id === id);
     res.render('show', {student});
 });
+
+app.get('/student/:id/edit', (req,res)=>{
+    const {id} = req.params;
+    const student = studentdata.find(i => i.id = id);
+    res.render('edit', {student})
+})
+
+app.patch('/student/:id', (req,res)=>{
+    const {id} = req.params;
+    const newMotoText = req.body.moto;
+    const foundMoto = studentdata.find(c => c.id === id);
+    foundMoto.moto = newMotoText;
+    res.redirect('/student');
+});
+
+app.delete('/student/:id', (req, res)=>{
+    const {id} = req.params;
+    studentdata = studentdata.filter(s => s.id !== id)
+    res.redirect('/student')
+})
 
 
 
