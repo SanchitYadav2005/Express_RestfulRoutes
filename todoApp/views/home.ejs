@@ -11,7 +11,9 @@
     <div>
         <ul>
             <% for(let t of todolist){ %>
-                <li><%= t.username %>--------<%= t.task %>  </li>
+                <li><%= t.username %>--------<%= t.task %>  
+                    <a href="/todo/<%= t.id %> ">Show</a>
+                </li>
             <% } %>  
         </ul>
         <form action="/todo/new">
